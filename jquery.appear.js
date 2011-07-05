@@ -7,6 +7,29 @@
 */
 (function($) {
   
+  $.fn.disappear = function(fn, options) {
+    
+    var settings = $.extend({
+
+      //arbitrary data to pass to fn
+      data: undefined
+      
+    }, options);
+
+    this.each(function() {
+      var t = $(this);
+
+      t.bind('disappear', fn, settings.data);
+
+      if (!fn) {
+
+        //trigger the custom event
+        t.trigger('disappear', settings.data);
+        return;
+      }
+    });
+  };
+  
   $.fn.appear = function(fn, options) {
     
     var settings = $.extend({
@@ -37,7 +60,6 @@
       
       //fires the appear event when appropriate
       var check = function() {
-
         //is the element hidden?
         if (!t.is(':visible')) {
           
@@ -52,7 +74,7 @@
         var o = t.offset();
         var x = o.left;
         var y = o.top;
-        
+
         if (y + t.height() >= b && 
             y <= b + w.height() &&
             x + t.width() >= a && 
@@ -62,8 +84,9 @@
           if (!t.appeared) t.trigger('appear', settings.data);
           
         } else {
-
           //it scrolled out of view
+          if (t.appeared) t.trigger('disappear', settings.data);
+
           t.appeared = false;
         }
       };
@@ -120,7 +143,7 @@
       $.fn.appear.timeout = setTimeout($.fn.appear.checkAll, 20);
     }
   });
-  
+
   //run checks when these methods are called
   $.each(['append', 'prepend', 'after', 'before', 'attr', 
           'removeAttr', 'addClass', 'removeClass', 'toggleClass', 
