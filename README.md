@@ -1,4 +1,4 @@
-## `jquery.appear`
+## jQuery Appear
 
 Mimics a custom "appear" event, which fires when an element scrolls into view or otherwise becomes visible to the user.
 
@@ -11,7 +11,7 @@ $('#foo').appear(function() {
 This plugin can be used to prevent unnecessary requests for content that's hidden or outside the viewable area.
 
 
-## Basic - Image Gallery
+## Examples: Image Gallery
 
 Load images when the user has scrolled to them.
 
@@ -32,6 +32,7 @@ Markup
 ```
 
 Script
+
 ``` js
 $(document).ready(function() {
   $('#gallery div').appear(function() {
@@ -41,11 +42,12 @@ $(document).ready(function() {
 });
 ```
 
-### Basic - Append Content with Ajax
+### Basic: Append Content with Ajax
 
 Append HTML content to the page as the user scrolls to the end.
 
 Markup
+
 ``` html
 <!-- Content that takes up the viewable area -->
 <div>Lorem ipsum...</div>
@@ -62,6 +64,7 @@ Markup
 ```
 
 Script
+
 ``` js
 $(document).ready(function() {
   $('#articles div').appear(function() {
@@ -71,7 +74,7 @@ $(document).ready(function() {
 });
 ```
 
-### Advanced - Image Search
+### Advanced: Image Search
 
 An image search similar to Microsoft Bing.  Initially the user sees four images.  As he scrolls down to the next four images, the next four results are loaded into the dom, and so on as he keeps scrolling.
 
@@ -240,3 +243,12 @@ $('#foo').appear();
   * Very basic implementation.  Only binds to the window's scroll event.
 
 
+
+## Copyright
+
+jQuery.appear
+http://code.google.com/p/jquery-appear/
+
+Copyright (c) 2009 Michael Hixson
+
+Licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php)
