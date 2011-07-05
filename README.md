@@ -16,6 +16,7 @@ This plugin can be used to prevent unnecessary requests for content that's hidde
 Load images when the user has scrolled to them.
 
 Markup
+
 ``` html
 <!-- Content that takes up the viewable area -->
 <div>Lorem ipsum...</div>
